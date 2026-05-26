@@ -11,7 +11,7 @@ services:
     environment:
       INTENT_SERVICE_HOST: intent-service
       INTENT_SERVICE_PORT: 50051
-      OLLAMA_BASE_URL: https://syidn-35-190-186-43.run.pinggy-free.link
+      OLLAMA_BASE_URL: https://hdwrr-8-231-187-122.run.pinggy-free.link
       OLLAMA_MODEL_NAME: ${OLLAMA_MODEL_NAME:-gpt-oss:20b}
     depends_on:
       - intent-service
@@ -28,7 +28,7 @@ services:
     ports:
       - "50051:50051"
     environment:
-      OLLAMA_BASE_URL: https://syidn-35-190-186-43.run.pinggy-free.link
+      OLLAMA_BASE_URL: https://hdwrr-8-231-187-122.run.pinggy-free.link
       INTENT_MODEL_NAME: ${INTENT_MODEL_NAME:-gpt-oss:20b}
       GRPC_PORT: 50051
     networks:

@@ -103,71 +103,74 @@ Sau khi khởi chạy thành công theo một trong hai cách trên, hãy mở t
 * **Tài liệu API chi tiết (FastAPI Swagger):** Truy cập **`http://localhost:8000/docs`**
 
 ### Các Câu Hỏi Chạy Thử Demo Tốt Nhất:
-* **Hỏi đáp thông tin bình thường:**
-  > `"What are the monthly maintenance fees for a basic checking account?"`
-* **Báo mất thẻ khẩn cấp (Độ ưu tiên High/Urgent - Độc quyền xử lý thông minh):**
   > `"I lost my credit card at the shopping mall today, please lock it immediately to prevent fraud!"`
+
+  > `"The ATM machine just swallowed my debit card and it won't come out. What do I do now?"`
+  
+  > `"I entered my card PIN incorrectly three times and now my debit card is blocked. How do I unblock it?"`
 
 ---
 
-## Cấu Trúc Thư Mục Dự Án (Project Structure)
+## 📂 Cấu Trúc Thư Mục Dự Án (Project Structure)
 
-```
+Dự án tuân thủ chính xác 100% sơ đồ cấu trúc file chuẩn được yêu cầu trong tài liệu đồ án của HCMUS với các đường liên kết trực quan:
+
+```text
 banking-service/
-  backend/
-    app/
-      agent/
-        orchestrator.py        # Luồng chạy chính (Agentic pipeline)
-      clients/
-        base.py
-        grpc_intent_client.py   # Client kết nối gRPC
-        intent_grpc/            # Thư mục chứa code gRPC sinh ra từ Makefile
-          intent_service_pb2_grpc.py
-          intent_service_pb2.py
-        ollama_client.py        # Kết nối HTTP tới Ollama
-      core/
-        schemas.py              # Định nghĩa cấu trúc Pydantic
-        settings.py             # Quản lý cấu hình & biến môi trường
-      data/
-        policies.py             # Chứa 18 chính sách ngân hàng mẫu
-      main.py                   # Điểm khởi chạy API Gateway FastAPI
-      nodes/                  # Các node xử lý thông tin độc lập
-        draft_node.py
-        intent_node.py
-        policy_node.py
-        priority_node.py
-        router_node.py
-        validation_node.py
-    Dockerfile
-    README.md                   # Hướng dẫn riêng cho backend
-    requirements.txt
-    run.py
-  docker-compose.yml            # File cấu hình Docker Compose chính
-  frontend/
-    Dockerfile
-    interface.py                # Giao diện Streamlit Chat UI
-    requirements.txt
-  intent_service/
-    app/
-      clients/
-        base.py
-        ollama_client.py
-      core/
-        schemas.py
-        settings.py
-      data/
-        policies.py
-      nodes/
-        intent_node.py
-    client.py                   # File test client gRPC nhanh
-    Dockerfile
-    intent_service_pb2_grpc.py  # Code gRPC sinh từ Makefile
-    intent_service_pb2.py       # Code gRPC sinh từ Makefile
-    intent_service.proto        # File định nghĩa dịch vụ gRPC
-    Makefile                    # Tự động hóa biên dịch gRPC stubs
-    requirements.txt
-    server.py                   # gRPC Server chính chạy cổng 50051
-  README.md                     # File hướng dẫn này
+├── backend/
+│   ├── app/
+│   │   ├── agent/
+│   │   │   └── orchestrator.py        # Luồng chạy chính (Agentic pipeline)
+│   │   ├── clients/
+│   │   │   ├── base.py
+│   │   │   ├── grpc_intent_client.py   # Client kết nối gRPC
+│   │   │   ├── intent_grpc/            # Thư mục chứa code gRPC sinh ra từ Makefile
+│   │   │   │   ├── intent_service_pb2_grpc.py
+│   │   │   │   └── intent_service_pb2.py
+│   │   │   └── ollama_client.py        # Kết nối HTTP tới Ollama
+│   │   ├── core/
+│   │   │   ├── schemas.py              # Định nghĩa cấu trúc Pydantic
+│   │   │   └── settings.py             # Quản lý cấu hình & biến môi trường
+│   │   ├── data/
+│   │   │   └── policies.py             # Chứa 18 chính sách ngân hàng mẫu
+│   │   ├── main.py                     # Điểm khởi chạy API Gateway FastAPI
+│   │   └── nodes/                      # Các node xử lý thông tin độc lập
+│   │       ├── draft_node.py
+│   │       ├── intent_node.py
+│   │       ├── policy_node.py
+│   │       ├── priority_node.py
+│   │       ├── router_node.py
+│   │       └── validation_node.py
+│   ├── Dockerfile
+│   ├── README.md                       # Hướng dẫn riêng cho backend
+│   ├── requirements.txt
+│   └── run.py
+├── frontend/
+│   ├── Dockerfile
+│   ├── interface.py                    # Giao diện Streamlit Chat UI (Được tối ưu Dark Mode)
+│   └── requirements.txt
+├── intent_service/
+│   ├── app/                            # Ý định phân loại logic
+│   │   ├── clients/
+│   │   │   ├── base.py
+│   │   │   └── ollama_client.py
+│   │   ├── core/
+│   │   │   ├── schemas.py
+│   │   │   └── settings.py
+│   │   ├── data/
+│   │   │   └── policies.py
+│   │   └── nodes/
+│   │       └── intent_node.py
+│   ├── client.py                       # File test client gRPC nhanh
+│   ├── Dockerfile
+│   ├── intent_service_pb2_grpc.py      # Code gRPC sinh từ Makefile
+│   ├── intent_service_pb2.py           # Code gRPC sinh từ Makefile
+│   ├── intent_service.proto            # File định nghĩa dịch vụ gRPC
+│   ├── Makefile                        # Tự động hóa biên dịch gRPC stubs
+│   ├── requirements.txt
+│   └── server.py                       # gRPC Server chính chạy cổng 50051
+├── docker-compose.yml                  # File cấu hình Docker Compose chính
+└── README.md                           # File hướng dẫn này (Tiếng Việt)
 ```
 
 ---

@@ -184,88 +184,47 @@ def display_workflow_details(data: dict):
         {"color": "#f43f5e", "bg": "rgba(244, 63, 94, 0.12)", "border": "rgba(244, 63, 94, 0.25)", "label": "❌ FAILED", "glow": "0 0 12px rgba(244, 63, 94, 0.2)"}
     )
 
-    # 3-Column Premium HTML Grid Rendering
+    # 3-Column Premium HTML Grid Rendering (Left-aligned to prevent Markdown indentation bug)
     st.markdown(
-        f"""
-        <div style="
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-            gap: 16px; 
-            margin-top: 10px;
-            margin-bottom: 20px;
-        ">
-            <!-- Card 1: Intent Recognition -->
-            <div style="
-                background: rgba(30, 41, 59, 0.35); 
-                padding: 18px; 
-                border-radius: 12px; 
-                border: 1px solid rgba(255, 255, 255, 0.06);
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            ">
-                <div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">🎯 INTENT RECOGNITION</div>
-                <div style="font-size: 1.3rem; font-weight: 800; color: #38bdf8; margin: 8px 0; font-family: 'Outfit', sans-serif;">{intent_name}</div>
-                <div style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
-                    <span>Confidence:</span>
-                    <span style="font-weight: 800; color: #10b981; font-size: 1rem;">{confidence:.0%}</span>
-                </div>
-                <!-- Progress Bar -->
-                <div style="width: 100%; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 8px; overflow: hidden;">
-                    <div style="width: {confidence * 100}%; height: 100%; background: linear-gradient(90deg, #38bdf8, #10b981); border-radius: 3px;"></div>
-                </div>
-            </div>
-            
-            <!-- Card 2: Urgency & Routing -->
-            <div style="
-                background: {p_style['bg']}; 
-                padding: 18px; 
-                border-radius: 12px; 
-                border: 1px solid {p_style['border']};
-                box-shadow: {p_style['glow']};
-            ">
-                <div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">⚡ URGENCY & ROUTING</div>
-                <div style="font-size: 1.3rem; font-weight: 800; color: {p_style['text']}; margin: 8px 0; font-family: 'Outfit', sans-serif;">{p_style['label']}</div>
-                <div style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
-                    <span>Routed To:</span>
-                    <span style="font-weight: 800; color: #f8fafc; background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 6px;">{routed_to}</span>
-                </div>
-            </div>
-            
-            <!-- Card 3: Validation & Action -->
-            <div style="
-                background: {v_style['bg']}; 
-                padding: 18px; 
-                border-radius: 12px; 
-                border: 1px solid {v_style['border']};
-                box-shadow: {v_style['glow']};
-            ">
-                <div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">🛡️ SAFEGUARD & NEXT ACTION</div>
-                <div style="font-size: 1.3rem; font-weight: 800; color: {v_style['color']}; margin: 8px 0; font-family: 'Outfit', sans-serif;">{v_style['label']}</div>
-                <div style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
-                    <span>Next Action:</span>
-                    <span style="font-weight: 800; color: #c084fc;">{next_action}</span>
-                </div>
-            </div>
-        </div>
-        """,
+        f"""<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 10px; margin-bottom: 20px;">
+<div style="background: rgba(30, 41, 59, 0.35); padding: 18px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+<div style="font-size: 0.75rem; color: #94a3b8; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">🎯 INTENT RECOGNITION</div>
+<div style="font-size: 1.3rem; font-weight: 800; color: #38bdf8; margin: 8px 0; font-family: 'Outfit', sans-serif;">{intent_name}</div>
+<div style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
+<span>Confidence:</span>
+<span style="font-weight: 800; color: #10b981; font-size: 1rem;">{confidence:.0%}</span>
+</div>
+<div style="width: 100%; height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-top: 8px; overflow: hidden;">
+<div style="width: {confidence * 100}%; height: 100%; background: linear-gradient(90deg, #38bdf8, #10b981); border-radius: 3px;"></div>
+</div>
+</div>
+<div style="background: {p_style['bg']}; padding: 18px; border-radius: 12px; border: 1px solid {p_style['border']}; box-shadow: {p_style['glow']};">
+<div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">⚡ URGENCY & ROUTING</div>
+<div style="font-size: 1.3rem; font-weight: 800; color: {p_style['text']}; margin: 8px 0; font-family: 'Outfit', sans-serif;">{p_style['label']}</div>
+<div style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
+<span>Routed To:</span>
+<span style="font-weight: 800; color: #f8fafc; background: rgba(255,255,255,0.08); padding: 2px 8px; border-radius: 6px;">{routed_to}</span>
+</div>
+</div>
+<div style="background: {v_style['bg']}; padding: 18px; border-radius: 12px; border: 1px solid {v_style['border']}; box-shadow: {v_style['glow']};">
+<div style="font-size: 0.75rem; color: #cbd5e1; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase;">🛡️ SAFEGUARD & NEXT ACTION</div>
+<div style="font-size: 1.3rem; font-weight: 800; color: {v_style['color']}; margin: 8px 0; font-family: 'Outfit', sans-serif;">{v_style['label']}</div>
+<div style="font-size: 0.85rem; color: #cbd5e1; display: flex; align-items: center; justify-content: space-between;">
+<span>Next Action:</span>
+<span style="font-weight: 800; color: #c084fc;">{next_action}</span>
+</div>
+</div>
+</div>""",
         unsafe_allow_html=True
     )
 
     # Intent reason container
     if intent_reason and intent_reason != "N/A":
         st.markdown(
-            f"""
-            <div style="
-                background: rgba(30, 41, 59, 0.2);
-                border-left: 4px solid #38bdf8;
-                padding: 12px 16px;
-                border-radius: 0 8px 8px 0;
-                margin-bottom: 16px;
-                font-size: 0.9rem;
-            ">
-                <span style="font-weight: 700; color: #38bdf8;">🧠 Intent Classification Rationale:</span><br/>
-                <span style="color: #cbd5e1; font-style: italic;">"{intent_reason}"</span>
-            </div>
-            """,
+            f"""<div style="background: rgba(30, 41, 59, 0.2); border-left: 4px solid #38bdf8; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; font-size: 0.9rem;">
+<span style="font-weight: 700; color: #38bdf8;">🧠 Intent Classification Rationale:</span><br/>
+<span style="color: #cbd5e1; font-style: italic;">"{intent_reason}"</span>
+</div>""",
             unsafe_allow_html=True
         )
 
@@ -273,29 +232,14 @@ def display_workflow_details(data: dict):
     policy = data.get("policy")
     if policy:
         st.markdown(
-            f"""
-            <div style="
-                background: rgba(139, 92, 246, 0.05);
-                border: 1px dashed rgba(139, 92, 246, 0.25);
-                padding: 16px;
-                border-radius: 12px;
-                margin-bottom: 16px;
-                box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            ">
-                <div style="display: flex; align-items: center; margin-bottom: 8px;">
-                    <span style="font-size: 1.2rem; margin-right: 8px;">📋</span>
-                    <span style="font-size: 0.95rem; font-weight: 800; color: #c084fc; letter-spacing: 0.02em; font-family: 'Outfit', sans-serif;">
-                        BANKING POLICY REFERENCE [{policy.get('policy_id', 'N/A')}]
-                    </span>
-                </div>
-                <div style="font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">
-                    {policy.get('title', 'N/A')}
-                </div>
-                <div style="font-size: 0.88rem; color: #94a3b8; line-height: 1.5; background: rgba(0,0,0,0.15); padding: 12px; border-radius: 8px;">
-                    {policy.get('content', 'N/A')}
-                </div>
-            </div>
-            """,
+            f"""<div style="background: rgba(139, 92, 246, 0.05); border: 1px dashed rgba(139, 92, 246, 0.25); padding: 16px; border-radius: 12px; margin-bottom: 16px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);">
+<div style="display: flex; align-items: center; margin-bottom: 8px;">
+<span style="font-size: 1.2rem; margin-right: 8px;">📋</span>
+<span style="font-size: 0.95rem; font-weight: 800; color: #c084fc; letter-spacing: 0.02em; font-family: 'Outfit', sans-serif;">BANKING POLICY REFERENCE [{policy.get('policy_id', 'N/A')}]</span>
+</div>
+<div style="font-size: 1.1rem; font-weight: 700; color: #f8fafc; margin-bottom: 6px;">{policy.get('title', 'N/A')}</div>
+<div style="font-size: 0.88rem; color: #94a3b8; line-height: 1.5; background: rgba(0,0,0,0.15); padding: 12px; border-radius: 8px;">{policy.get('content', 'N/A')}</div>
+</div>""",
             unsafe_allow_html=True
         )
 
@@ -303,19 +247,10 @@ def display_workflow_details(data: dict):
     missing = data.get("missing_info")
     if missing:
         st.markdown(
-            f"""
-            <div style="
-                background: rgba(234, 179, 8, 0.08);
-                border-left: 4px solid #eab308;
-                padding: 12px 16px;
-                border-radius: 0 8px 8px 0;
-                margin-bottom: 16px;
-                font-size: 0.9rem;
-            ">
-                <span style="font-weight: 700; color: #eab308;">⚠️ Prompting Missing Parameters:</span><br/>
-                <span style="color: #cbd5e1;">The user needs to provide: <strong>{missing}</strong></span>
-            </div>
-            """,
+            f"""<div style="background: rgba(234, 179, 8, 0.08); border-left: 4px solid #eab308; padding: 12px 16px; border-radius: 0 8px 8px 0; margin-bottom: 16px; font-size: 0.9rem;">
+<span style="font-weight: 700; color: #eab308;">⚠️ Prompting Missing Parameters:</span><br/>
+<span style="color: #cbd5e1;">The user needs to provide: <strong>{missing}</strong></span>
+</div>""",
             unsafe_allow_html=True
         )
 
