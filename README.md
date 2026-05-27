@@ -108,7 +108,7 @@ Sau khi khởi chạy thành công theo một trong hai cách trên, hãy mở t
   > `"I entered my card PIN incorrectly three times and now my debit card is blocked. How do I unblock it?"`
 
 
-Lần chạy đầu tiên có thể model gặp lỗi chưa load được (ra intent "general_inquiry"), chỉ cần f5 load lại web rồi hỏi lại là được.
+* Lần chạy đầu tiên có thể model gặp lỗi chưa load được (ra intent "general_inquiry"), chỉ cần f5 load lại web rồi hỏi lại là được.
 ---
 
 ## Cấu Trúc Thư Mục Dự Án (Project Structure)
