@@ -58,8 +58,6 @@ Hệ thống được thiết kế theo mô hình Microservices phân rã thành
 
 ## Hướng Dẫn Khởi Chạy Hệ Thống
 
-Bạn có thể chạy hệ thống bằng **Docker Compose (Khuyên dùng)** hoặc chạy **Thủ công từng dịch vụ bằng Python**.
-
 ---
 
 ### Chạy Bằng Docker Compose
@@ -102,16 +100,16 @@ Sau khi khởi chạy thành công theo một trong hai cách trên, hãy mở t
 * **Giao diện Chat trực quan (Streamlit UI):** Truy cập **`http://localhost:8501`**
 * **Tài liệu API chi tiết (FastAPI Swagger):** Truy cập **`http://localhost:8000/docs`**
 
-### Các Câu Hỏi Chạy Thử Demo Tốt Nhất:
+### Một số câu hỏi có thể tham khảo:
   > `"I lost my credit card at the shopping mall today, please lock it immediately to prevent fraud!"`
 
   > `"The ATM machine just swallowed my debit card and it won't come out. What do I do now?"`
-  
+
   > `"I entered my card PIN incorrectly three times and now my debit card is blocked. How do I unblock it?"`
 
 ---
 
-## 📂 Cấu Trúc Thư Mục Dự Án (Project Structure)
+## Cấu Trúc Thư Mục Dự Án (Project Structure)
 
 Dự án tuân thủ chính xác 100% sơ đồ cấu trúc file chuẩn được yêu cầu trong tài liệu đồ án của HCMUS với các đường liên kết trực quan:
 
@@ -147,7 +145,7 @@ banking-service/
 │   └── run.py
 ├── frontend/
 │   ├── Dockerfile
-│   ├── interface.py                    # Giao diện Streamlit Chat UI (Được tối ưu Dark Mode)
+│   ├── interface.py                    # Giao diện Streamlit Chat UI
 │   └── requirements.txt
 ├── intent_service/
 │   ├── app/                            # Ý định phân loại logic
