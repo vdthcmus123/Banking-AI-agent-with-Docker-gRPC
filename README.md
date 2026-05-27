@@ -173,9 +173,7 @@ banking-service/
 
 ---
 
-## 🎥 Video Demo
-- **Đường dẫn xem Video Demo hệ thống:** [HÃY DÁN ĐƯỜNG LINK VIDEO DEMO CỦA BẠN VÀO ĐÂY](https://github.com/)
+## Video Demo
+- **Link video demo:** [Link Video Youtube](https://youtu.be/-6g47z0Zb9E)
 
 ---
-
-*Chúc các bạn hoàn thành xuất sắc đồ án môn học với điểm số cao nhất!* 🚀🏦
